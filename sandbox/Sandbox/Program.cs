@@ -7,73 +7,11 @@ namespace game
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello Sandbox World!!!");
-            
-            // string first = Console.ReadLine();
-            // Console.Write("What is your last name?");
-            // string last = Console.ReadLine();
+            Console.WriteLine("Hello Sandbox World!!!");
+        }    
+           
 
-            // Console.Write($"\nYour name is {last}, {first} {last}!");
-
-            //Grade Simulator
-            Console.Write("What is your grade percentage?");
-            string str = Console.ReadLine();
-            float user = float.Parse(str);
-            string letter= "";
-            float num = user %10;
-            string signal= "";
-
-            if (user >=90)
-                {
-                    letter = "A";
-
-                }
-            else if(user >=80)
-                {
-                    letter = "B";
-                }
-            else if(user >= 70)
-                {
-                    letter = "C";
-                }
-            else if(user >= 60)
-                {
-                    letter = "D";
-                }
-            else 
-                {
-                   letter = "F";
-                }
-
-            
-         
-            if (num >=7 && letter != "A" && letter !="F") 
-                {
-                    signal= "+";
-                }
-            else if (num < 3 && letter!= "F")
-                {
-                    signal = "-";
-                }
-            else
-                {
-                    signal = "";
-                }
-
-          
-
-            if(user >= 70)
-                {
-                    Console.WriteLine($"You took {letter}{signal}!");
-                    Console.WriteLine("Congratulations, you passed!");
-                }
-            else
-                {
-                    Console.WriteLine($"You took {letter}{signal}!");
-                    Console.WriteLine("Sorry, you didn't pass! Study more next time!");
-                    
-                }
-        } 
+           
         
 
 
