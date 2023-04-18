@@ -7,30 +7,74 @@ namespace game
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Sandbox World!!!");
+            //Console.WriteLine("Hello Sandbox World!!!");
             
+            // string first = Console.ReadLine();
+            // Console.Write("What is your last name?");
+            // string last = Console.ReadLine();
 
-             //     Console.Write("What is your favorite color? ");
-                //     string color = Console.ReadLine()
-                // Console.Write("Choose a number:");
-                // string xstring = Console.ReadLine();
-                // int x = int.Parse(xstring);
+            // Console.Write($"\nYour name is {last}, {first} {last}!");
 
-                // int y=3;
-                // if (x>y)
-                // {
-                //     Console.WriteLine($"The number you chose is {x}  is Correct");
-                // }
-                // else{
-                //     Console.WriteLine($"The number you chose is {x} is Incorrect");
-                // }
-                //    Console.Write("What is your name?");
-            string first = Console.ReadLine();
-            Console.Write("What is your last name?");
-            string last = Console.ReadLine();
+            //Grade Simulator
+            Console.Write("What is your grade percentage?");
+            string str = Console.ReadLine();
+            float user = float.Parse(str);
+            string letter= "";
+            float num = user %10;
+            string signal= "";
 
-            Console.Write($"\nYour name is {last}, {first} {last}!");
-        }
+            if (user >=90)
+                {
+                    letter = "A";
+
+                }
+            else if(user >=80)
+                {
+                    letter = "B";
+                }
+            else if(user >= 70)
+                {
+                    letter = "C";
+                }
+            else if(user >= 60)
+                {
+                    letter = "D";
+                }
+            else 
+                {
+                   letter = "F";
+                }
+
+            
+         
+            if (num >=7 && letter != "A" && letter !="F") 
+                {
+                    signal= "+";
+                }
+            else if (num < 3 && letter!= "F")
+                {
+                    signal = "-";
+                }
+            else
+                {
+                    signal = "";
+                }
+
+          
+
+            if(user >= 70)
+                {
+                    Console.WriteLine($"You took {letter}{signal}!");
+                    Console.WriteLine("Congratulations, you passed!");
+                }
+            else
+                {
+                    Console.WriteLine($"You took {letter}{signal}!");
+                    Console.WriteLine("Sorry, you didn't pass! Study more next time!");
+                    
+                }
+        } 
+        
 
 
     }
