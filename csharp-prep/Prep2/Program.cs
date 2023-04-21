@@ -1,9 +1,12 @@
 using System;
+using System.Globalization;
 
 class Program
 {
     static void Main(string[] args)
     {
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+
          //Grade Simulator
             Console.Write("What is your grade percentage?");
             string str = Console.ReadLine();
@@ -30,7 +33,7 @@ class Program
                     letter = "D";
                 }
             else 
-                {
+                { 
                    letter = "F";
                 }
 
