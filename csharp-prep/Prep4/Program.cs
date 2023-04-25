@@ -7,6 +7,7 @@ class Program
     {
 
         List<float> numbers = numbers= new List<float>();
+        numbers.Sort();
         float sum=0;
         float avg=0;
         float num_list=0;
@@ -40,10 +41,10 @@ class Program
             Console.WriteLine($"The average is: {avg}");
             Console.WriteLine($"The larges number is: {larg}");
             Console.WriteLine($"The larges number is: {small}");
-            numbers.Sort();
-            foreach(float num in numbers){
-                Console.WriteLine($"The sum is: {num}");
-
+            Console.WriteLine($"The sorted list is is:");
+            foreach(float num in numbers)
+            {
+                Console.WriteLine(num);
             }
 
 
