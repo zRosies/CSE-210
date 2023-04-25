@@ -37,7 +37,7 @@ class Program
         }
             num_list=numbers.Count();
             avg=sum/num_list;
-            Console.WriteLine($"The sum is: {sum}");
+            Console.WriteLine($"\nThe sum is: {sum}");
             Console.WriteLine($"The average is: {avg}");
             Console.WriteLine($"The larges number is: {larg}");
             Console.WriteLine($"The larges number is: {small}");
