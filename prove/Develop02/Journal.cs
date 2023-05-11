@@ -16,11 +16,12 @@ class Journal{
     public void LoadCsvFile(){
         Console.WriteLine("Enter your File name: ");
         string _csv =  Console.ReadLine();
-        string[] lines = System.IO.File.ReadAllLines(_csv);
+        string content = File.ReadAllText(_csv);
+        //Reading the place where the line breaks
+        string[] lines = content.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
         foreach(string line in lines){
-            string[] parts = line.Split(",");
-            string part= parts[0];
-            _useren._UserEntries.Add(part);
+
+            _useren._UserEntries.Add(line);
 
         }
     }
@@ -36,6 +37,12 @@ class Journal{
 
         }
 
+
+    }
+    public void EraseJournal(){
+        Console.Write("Write the number of the line you want to remove: ");
+        string userchoice=Console.ReadLine();
+        _useren.Erase(userchoice);
 
     }
 

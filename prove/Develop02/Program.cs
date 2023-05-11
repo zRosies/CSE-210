@@ -6,7 +6,8 @@ class Program
     {
         // Journal journal = new Journal();
         static void GetUserChoice(){
-            //Displays the prompt to the user;
+            Console.WriteLine("Welcome to your friendly journal!");
+            //Displays the MENU;
             string[] lista={"\n1.Write","2.Display","3.Load","4.Save","5.Erase","6.Quit"};
             string user ="";
             do{
@@ -19,7 +20,7 @@ class Program
                 // int userchoice= int.Parse(user);
                 if(user == "1"){
                     _userchoice.Displayprompt();
-                    Console.WriteLine("Answer recorded");
+                    Console.WriteLine("Answer recorded!");
                 }
                 else if(user == "2"){
                     Journal _userchoice= new Journal();
@@ -27,18 +28,23 @@ class Program
                 }
                 else if(user == "3"){
                     _userchoice.LoadCsvFile();
+                    Console.WriteLine("\nFile Loaded!");
                 }
                 else if(user == "4"){
                     _userchoice.SaveToFile();
+                    Console.WriteLine("\nFile Saved!");
+                    
                 }
                 else if(user == "5"){
-                    Console.WriteLine("AA");
+                    _userchoice.EraseJournal();
+                    Console.WriteLine("\nItem Removed!");
+                    
                 }
                 else if(user == "6"){
                     Console.WriteLine();
                 }
                 else{
-                    Console.WriteLine("Please, choose a number inside the menu");
+                    Console.WriteLine("\nPlease, choose a number inside the menu");
                 }
 
             }while(user != "6");

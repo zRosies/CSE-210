@@ -6,10 +6,10 @@ class Entry{
     public void RandomPrompt(){
         string useranswer="";
         string[] prompts = {
-            "What was the best part of my day? ",
-            "What made me feel angry today? ",
-            "What was worst thing of my day? ",
-            "What was something I was grateful for? ",
+            "What was the best part of your day? ",
+            "What made you feel angry today? ",
+            "What was worst thing of your day? ",
+            "What was something you are grateful for? ",
             "Write something about today you will want to remember in tens years: "
         };
         Random randompick = new Random();
@@ -21,13 +21,28 @@ class Entry{
         useranswer=Console.ReadLine();
         DateTime date = DateTime.Now;
         string currentdate = date.ToShortDateString();
-        _userentry=($"Date: {currentdate} - Prompt: {prom}: \n{useranswer}");
+        int newline = _UserEntries.Count +1;
+        _userentry=($". Date: {currentdate} - Prompt: {prom} \n{useranswer} ");
         StoreEntries(_userentry);      
     }
     
     public void StoreEntries(string _userentry){
        _UserEntries.Add(_userentry);
       
+    }
+    public void Erase(string number){
+        //Removes the index lines based on the user choice
+        int choice = int.Parse(number);
+        for(int i =0;i < _UserEntries.Count; i ++){
+            if(choice == i){
+                _UserEntries.Remove(_UserEntries[i-1]);
+    
+                
+            }
+
+        }
+        
+
     } 
     
     
