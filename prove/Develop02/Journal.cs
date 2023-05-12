@@ -1,14 +1,14 @@
 class Journal{
-    public static Entry _useren= new Entry();
+    public static Entry _userEnt= new Entry();
     string _userChoice;
     string _csv;
     
     public void Displayprompt(){
-        _useren.RandomPrompt();
+        _userEnt.RandomPrompt();
 
     }
     public void DisplayEntries(){
-        foreach(string line in _useren._UserEntries){
+        foreach(string line in _userEnt._userEntries){
             Console.WriteLine(line);
         }
  
@@ -21,7 +21,7 @@ class Journal{
         string[] lines = content.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
         foreach(string line in lines){
 
-            _useren._UserEntries.Add(line);
+            _userEnt._userEntries.Add(line);
 
         }
     }
@@ -30,8 +30,8 @@ class Journal{
         string _csv =  Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(_csv))
         {
-            // You can add text to the file with the WriteLine method
-            foreach(string line in _useren._UserEntries){
+            //Adding text into the List
+            foreach(string line in _userEnt._userEntries){
                 outputFile.WriteLine(line);
             }
 
@@ -40,9 +40,9 @@ class Journal{
 
     }
     public void EraseJournal(){
-        Console.Write("Write the number of the line you want to remove: ");
+        Console.Write("Write the number of the line of the journal you want to remove: ");
         string userchoice=Console.ReadLine();
-        _useren.Erase(userchoice);
+        _userEnt.Erase(userchoice);
 
     }
 

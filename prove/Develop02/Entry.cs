@@ -1,7 +1,7 @@
 class Entry{
-    public List<string> _UserEntries = new List<string>();
-    string _userentry;
-    private object prom;
+    public List<string> _userEntries = new List<string>();
+    string _userEntry;
+    private object _prom;
 
     public void RandomPrompt(){
         string useranswer="";
@@ -16,26 +16,26 @@ class Entry{
         //Chooses a random index between 0 and the prompt length
         int index = randompick.Next(0,prompts.Length);
         
-        prom=(prompts[index]);
-        Console.WriteLine(prom);
+        _prom=(prompts[index]);
+        Console.WriteLine(_prom);
         useranswer=Console.ReadLine();
         DateTime date = DateTime.Now;
         string currentdate = date.ToShortDateString();
-        int newline = _UserEntries.Count +1;
-        _userentry=($". Date: {currentdate} - Prompt: {prom} \n{useranswer} ");
-        StoreEntries(_userentry);      
+        int newline = _userEntries.Count +1;
+        _userEntry=($". Date: {currentdate} - Prompt: {_prom} \n{useranswer} ");
+        StoreEntries(_userEntry);      
     }
     
-    public void StoreEntries(string _userentry){
-       _UserEntries.Add(_userentry);
+    public void StoreEntries(string _userEntry){
+       _userEntries.Add(_userEntry);
       
     }
     public void Erase(string number){
         //Removes the index lines based on the user choice
         int choice = int.Parse(number);
-        for(int i =0;i < _UserEntries.Count; i ++){
+        for(int i =0;i < _userEntries.Count; i ++){
             if(choice == i){
-                _UserEntries.Remove(_UserEntries[i-1]);
+                _userEntries.Remove(_userEntries[i-1]);
     
                 
             }
