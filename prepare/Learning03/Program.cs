@@ -10,16 +10,12 @@ class Program
         Console.Write("\n");
         Console.Write(output.getDecimal());
         Console.Write("\n");
-        
-        
-        // Console.Writeline();
 
         output.Top=5;
         Console.Write(output.GetFractionString());
         Console.Write("\n");
         Console.Write(output.getDecimal());
         Console.Write("\n");
-        // Console.Writeline(output.getde());
         
         output.Top=3;
         output.Bot=4;
@@ -27,8 +23,6 @@ class Program
         Console.Write("\n");
         Console.Write(output.getDecimal());
         Console.Write("\n");
-        // Console.Writeline(output.GetFractionString());
-        // Console.Writeline(output.GetFractionString());
         
         output.Top=1;
         output.Bot=3;
