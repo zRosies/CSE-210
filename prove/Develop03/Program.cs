@@ -8,7 +8,7 @@ class Program
         Render _Render = new Render(Hide);
         _Render.RenderDefault();
         
-        string[] list = {"\n1. Memorize Scripture", "2. Add Scripture","3. Quit"};
+        string[] list = {"\n1. Memorize Scripture", "2. Add Scripture","3. Display list of Scriptures", "4. Quit"};
         string userchoice="";
        do{  
             Console.WriteLine("\nWelcome to the Scripture Memorizer");
@@ -33,6 +33,10 @@ class Program
                 string scripture=Console.ReadLine();
                 Hide.SetSentence(reference, scripture);
                 Console.WriteLine("\nScripture Added");
+
+            }
+            else if(userchoice == "3"){
+                _Render.RenderListOfOptions();
 
             }
             else{
