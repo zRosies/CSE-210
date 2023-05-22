@@ -1,23 +1,90 @@
 public class Hide{
-    public static Scriptures Scripture = new Scriptures();
+    public Scriptures _ReferenceModified = new Scriptures();
+    public Hide()
+    {
+        _ReferenceModified = new Scriptures();
+    }
 
- 
-    private string reference = Scripture.GetAndSetReference;
-    private string text = Scripture.GetAndSetScripture;
+    public Hide(string reference, string scripture)
+    {
+        _ReferenceModified = new Scriptures(reference, scripture);
+    }
+    
+    
+    public void setRefDefault(){
+        string _reference= "John 3:17";
+        string _scripture= "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
+        string _ref2 = "Proverbs 3:5-6";
+        string _scripture2 ="rust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.";
+        _ReferenceModified.AddSentence(_reference,_scripture);
+        _ReferenceModified.AddSentence(_ref2,_scripture2);
+    }
 
-    //Chosing a random part of the Scripture to be hidden 
-    public void HidePartsOfScripture(string text){
-        string[] words= text.Split(' ');
-        var random = new Random();
-        int randomIndex= random.Next(words.Length);
-        for(int i=0; i < words.Length; i++){
-            if(i==randomIndex){
-                words[i]= new string('_', words[i].Length);
-            }
-        }
-        string modifiedText = string.Join(" ", words);
+    public void SetSentence(string userRef, string userScripture){
+        userRef= _ReferenceModified.GetAndSetReference=$"{userRef}";
+        userScripture= _ReferenceModified.GetAndSetScripture=$"{userScripture}";
+        _ReferenceModified.AddSentence(userRef,userScripture);
 
     }
-    public string 
+        //Choosing a random part of the Scripture to be hidden 
+    
+
+    // public string GetSentenceFromList(string userchoice)
+    // {
+    //     List<string> list = _ReferenceModified.List();
+    //     string scriptureSentence = _ReferenceModified.BreakSentence(list, userchoice);
+    //     return scriptureSentence;
+    // }
+    // public string GetRefernceFromList(string userchoice){
+    //     List<string> list = _ReferenceModified.List();
+    //     string ReferenceSentence = _ReferenceModified.BreakReference(list, userchoice);
+    //     return ReferenceSentence;
+
+    // }
+
+
+    public void HidePartsOfScripture(string userchoice){
+        var random = new Random();
+        string reference = _ReferenceModified.BreakReference(userchoice);
+        string sentence = _ReferenceModified.BreakSentence(userchoice);
+        string[] words= sentence.Split(' ');
+        Console.WriteLine($"\n{reference} {sentence}");
+        
+        int randomIndex;
+        string userEntry;
+        do{
+            Console.WriteLine("\nPress Enter to continue or type 'quit' to finish");
+            userEntry = Console.ReadLine();
+            if (userEntry == "quit")
+                break;
+            
+            //It won't repeat the random word//
+            do{
+                    randomIndex = random.Next(words.Length); 
+                    if(words[randomIndex][0]!= '_')
+                        break;
+                }while(true);
+
+            //Replace the random word with a "_" //  
+            for (int i = 0; i < words.Length; i++)
+            
+            {
+            
+                if (i == randomIndex)
+                {
+                    words[i] = new string('_', words[i].Length);
+                }
+            }
+
+        string modifiedText = string.Join(" ",reference, string.Join(" ", words));
+        Console.WriteLine(modifiedText);
+        // if(words){
+
+        // }
+        }while(userEntry != "quit");
+
+    }
+    
+
 
 }

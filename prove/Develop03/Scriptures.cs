@@ -1,7 +1,22 @@
 public class Scriptures{
-    private List<string> ScriptList= new List<string>(); 
+    private List<string> _ScriptList= new List<string>(); 
     private string _Scriptures;
     private string _References;
+    private string _sentence;
+
+    public Scriptures(){
+		_Scriptures ="";
+		_References="";
+	}
+
+	public Scriptures(string reference){
+		_References = reference;
+		_Scriptures = "";
+	}
+	public Scriptures (string reference, string Sentences){
+		_References =reference;
+		_Scriptures= Sentences;
+	}
 
 
     public string GetAndSetScripture{
@@ -14,14 +29,50 @@ public class Scriptures{
         get{return _References;}
         set{_References = value;}
     }
-    public void ScripturesAndRef(string reference, string Scripture){
-        _References=reference;
+    public void AddSentence(string Reference, string Scripture){
+        _References=Reference;
         _Scriptures= Scripture;
+        int index = _ScriptList.Count + 1;
+        _sentence = $"{index}. {Reference}; {Scripture} ";
+        _ScriptList.Add(_sentence);
     }
 
-    
-    
+    public void Displaylist(){
+        foreach (string sentence in _ScriptList)
+        {
+            Console.WriteLine(sentence);
+        }
+    }
+    public string BreakSentence( string user){
+        int index= int.Parse(user);
+        index-=1;
 
+        string _UserString = _ScriptList[index];
+        string[] scriptSentenceParts = _UserString.Split(";");
+        string scriptSentence = scriptSentenceParts[1].Trim();
+        
+
+        return scriptSentence;
+            
+    }
+    public string BreakReference(string user){
+       
+        int index= int.Parse(user);
+        index-=1;
+        string _UserString = _ScriptList[index];
+        string[] scriptSentenceParts = _UserString.Split(";");
+        string refSentence = scriptSentenceParts[0].Trim();
+        
+
+        return refSentence;
+    }
+    public List<string> List(){
+        return _ScriptList;
+    }
+    // crt+k+c comment
+    // crt+k+u undo comment
+    // crt+z undo 
 
 
 }
+
