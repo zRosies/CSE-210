@@ -40,6 +40,10 @@ class Program
                 _Render.RenderListOfOptions();
 
             }
+            else if(userchoice == "4"){
+                Console.WriteLine("\nHave a nice day :D");
+                userchoice="4";
+            }
             else{
                 Console.WriteLine("\nPlease, choose an number within the list");
 

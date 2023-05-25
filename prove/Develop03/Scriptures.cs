@@ -30,7 +30,6 @@ public class Scriptures{
         set{_References = value;}
     }
     // ------------------------------------------------//
-    
     public void AddSentence(string Reference, string Scripture){
         _References=Reference;
         _Scriptures= Scripture;
@@ -70,11 +69,10 @@ public class Scriptures{
         return refSentence;
     }
     //------------------------------------------------------------------//
-
+    
     public List<string> List(){
         return _ScriptList;
     }
-
 
 }
 
