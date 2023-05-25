@@ -12,19 +12,13 @@ public class Render
 
 
     }
+
     public void RenderDefault(){
         _Render.setRefDefault();
     }
+    
     public void RenderListOfOptions()
     {
-        // Display the scriptures
         _Render._ReferenceModified.Displaylist();
     }
 }
-
-
-// userchoice = Console.ReadLine();
-//             userchoice.ToLower();
-
-//         Console.Write("Press enter to continue or type quit to finish");
-

@@ -1,21 +1,12 @@
 public class Hide{
     private Scriptures ReferenceModified = new Scriptures();
-    public Hide()
-    {
-        ReferenceModified = new Scriptures();
-    }
     
         public Scriptures _ReferenceModified
     {
         get { return ReferenceModified; }
     }
-
-    public Hide(string reference, string scripture)
-    {
-        ReferenceModified = new Scriptures(reference, scripture);
-    }
     
-    
+    //Setting the defaults scriptures witih the list.
     public void setRefDefault(){
         string _reference= "John 3:17";
         string _scripture= "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.";
@@ -28,6 +19,7 @@ public class Hide{
         _ReferenceModified.AddSentence(_reference3, _scripture3);
     }
 
+    //Adding the users' scripture and reference within the list.
     public void SetSentence(string userRef, string userScripture){
         userRef= _ReferenceModified.GetAndSetReference=$"{userRef}";
         userScripture= _ReferenceModified.GetAndSetScripture=$"{userScripture}";
@@ -51,7 +43,7 @@ public class Hide{
             if (userEntry == "quit")
                 break;
 
-            //Trying to exit the loop...
+            //Trying to exit the loop if all words are hidden...//
             bool checking= true;
             foreach (string word in words)
             {
@@ -66,6 +58,8 @@ public class Hide{
             if (checking){
                         userEntry="quit";
                     }
+            //----------------------------------//
+            
             //It won't repeat the random word//
             do{
                     randomIndex = random.Next(words.Length); 
@@ -73,12 +67,23 @@ public class Hide{
                         break;
                 }while(true && checking == false);
 
-            //Replace the random word with a "_" //  
+            //Replacing the random word with a "_" //  
             for (int i = 0; i < words.Length; i++){
             
                 if (i == randomIndex)
                 {
                     words[i] = new string('_', words[i].Length);
+                    //hidding more than a single word//
+                    if( i+3 < words.Length ){
+                        words[i+3] = new string('_', words[i].Length);
+                        
+
+                    }
+                    if(i-2 > words[0].Length)
+                    {
+                         words[i-2] = new string('_', words[i].Length);
+                    }
+                    //--------------------------------//
                 }
             }   
 

@@ -18,7 +18,7 @@ public class Scriptures{
 		_Scriptures= Sentences;
 	}
 
-
+    //This allows the user to add scriptures and references
     public string GetAndSetScripture{
         get{return _Scriptures;}
         set{_Scriptures = value;}
@@ -29,6 +29,8 @@ public class Scriptures{
         get{return _References;}
         set{_References = value;}
     }
+    // ------------------------------------------------//
+    
     public void AddSentence(string Reference, string Scripture){
         _References=Reference;
         _Scriptures= Scripture;
@@ -43,6 +45,7 @@ public class Scriptures{
             Console.WriteLine(sentence);
         }
     }
+    //This breaks the whole text (John 3:17: Scripture......) getting info from the list//
     public string BreakSentence( string user){
         int index= int.Parse(user);
         index-=1;
@@ -66,12 +69,11 @@ public class Scriptures{
 
         return refSentence;
     }
+    //------------------------------------------------------------------//
+
     public List<string> List(){
         return _ScriptList;
     }
-    // crt+k+c comment
-    // crt+k+u undo comment
-    // crt+z undo 
 
 
 }
