@@ -22,7 +22,7 @@ class Program
 
         foreach(Shape test in shape){
             double area = test.getArea();
-            Console.WriteLine($"Color: {test.getSetColor}; Area: {area.ToString("F2")} ");
+            Console.WriteLine($"This shape has color {test.getSetColor} AND Area: {area.ToString("F2")} ");
         }
 
 
