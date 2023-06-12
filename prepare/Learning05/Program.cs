@@ -2,20 +2,31 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning05 World!");
+        Square square = new Square();
+        square.getSetColor="blue";
+        square.getSetSide=4;
 
-        int countdown=5;
-        DateTime start = DateTime.Now;
-        DateTime end = start.AddSeconds(countdown);
-        do{
-                Console.Write(countdown);
-                countdown-=1;   
-                Thread.Sleep(1000);
-                Console.Write("\b \b"); 
-                Console.Write(countdown);
-                Console.Write("\b \b"); 
-               
+        Rectangle rectangle = new Rectangle();
+        rectangle.getSetColor = "red";
+        rectangle.getSetLength=2;
+        rectangle.getSetWidth=4;
 
-        } while(DateTime.Now < end);
+        Circle circle = new Circle();
+        circle.getSetColor="yellow";
+        circle.getSetRadius=4;
+
+        List<Shape> shape = new List<Shape>();
+        shape.Add(circle);
+        shape.Add(rectangle);
+        shape.Add(square);
+
+        foreach(Shape test in shape){
+            double area = test.getArea();
+            Console.WriteLine($"Color: {test.getSetColor}; Area: {area.ToString("F2")} ");
+        }
+
+
+
     }
+
 }
