@@ -13,11 +13,6 @@ public class CreateGoal{
 
     }
 
-    
-    public int getSetScore{
-        get{return _score;}
-        set{_score=value;}
-    }
 
     public string DisplayGoalType(){
         string user="";
@@ -54,8 +49,10 @@ public class CreateGoal{
 
         Console.WriteLine("What is the amount of poins associated with this goal?");
         string score= Console.ReadLine();
+        
+        bool compelte= false;
 
-        string simpleGoal = $"Eternal,{name},{description},{score},{score};";
+        string simpleGoal = $"Eternal,{name},{description},{score},{compelte};";
 
         return simpleGoal;
 
@@ -73,11 +70,58 @@ public class CreateGoal{
 
     }
 
-    public void AddGoals(string goal){
-        _goals.Add(goal);
+    public void AppendGoalsfromFile()
+    {
+        foreach (string line in _goals)
+        {
+            if (!string.IsNullOrEmpty(line))
+            {
+                string[] sentence = line.Split(",");
+                string goalType = sentence[0];
+
+                if (goalType == "SimpleGoal" || goalType == "Eternal")
+                {
+                    string complete = sentence[4];
+                    string score = sentence[3];
+                    int addScore = int.Parse(score);
+                    if (complete == "true;")
+                    {
+                        _score += addScore;
+                    }
+                }
+                else if (goalType == "Checklist")
+                {
+                    string score = sentence[3];
+                    string bonus = sentence[4];
+                    string timesdone = sentence[5];
+                    string timestobedone = sentence[6];
+                    int scoreParsed = int.Parse(score);
+                    int bonusParsed = int.Parse(bonus);
+                    int timesdoneParsed = int.Parse(timesdone);
+
+                    _score += timesdoneParsed * scoreParsed;
+
+                    if (timesdone == timestobedone.TrimEnd(';'))
+                    {
+                        _score += bonusParsed;
+                    }
+                }
+                else
+                {
+             
+                  
+                 
+                }
+
+                
+            }
+        
+        }
+        
     }
 
     public void EraseGoal(){
+        _goals.Remove(_goals[0]);
 
     }
 

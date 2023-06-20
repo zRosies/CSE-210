@@ -7,7 +7,8 @@ class Program
         List<CreateGoal> goals = new List<CreateGoal>();
         Checklist checklist = new Checklist();
         Eternal eternal = new Eternal();
-        Simple simple = new Simple(); 
+        Simple simple = new Simple();
+        int counter= 0;
 
         do {
             int pontuation =0;
@@ -15,7 +16,7 @@ class Program
                 pontuation += go.DisplayScore();
                 
             }
-            Console.WriteLine($"You have: {pontuation} points");
+            Console.WriteLine($"You have: {pontuation} points.");
 
             Console.WriteLine("\nMenu:");
             foreach(string line in menu) {
@@ -23,7 +24,7 @@ class Program
             }
             Console.Write("\nSelect a number from the menu: ");
             user = Console.ReadLine();
-
+            
             if(user == "1") {
                 string choice = simple.DisplayGoalType();
                 if(choice == "1") {
@@ -41,9 +42,9 @@ class Program
                     goals.Add(new Checklist(goal));
                 
                 }
-                foreach(CreateGoal go in goals){
-                        go.Append();
-                    }
+                CreateGoal go = goals[counter];
+                    go.Append();
+                counter++;
             }
             else if(user == "2") {
                 int count=1;
@@ -57,7 +58,6 @@ class Program
                 foreach(CreateGoal go in goals){
                     test.Add(go.SaveToFile());
                 }
-                // Console.Write(test[0]);
 
                 Console.WriteLine("Write your file name to save: ");
                 string fileName = Console.ReadLine();
@@ -73,37 +73,34 @@ class Program
                 Console.WriteLine("Write the file you want to load name: ");
                 string fileName = Console.ReadLine();
                 string[] file = System.IO.File.ReadAllLines(fileName);
-
+                string test="";
                 foreach(string line in file){
                    string[] parts = line.Split(",");
-                   string goalType= parts[0];
-                   string name = parts[1];
-                   string description= parts[2];
-                   string score= parts[3];
-                   
-                   
+                   string goalType= parts[0];                   
 
                     if(goalType=="SimpleGoal"){
-                        // string boolean= parts[4];
-                        // string aa= $"{goalType},{name},{description},{score},{boolean};";
+                        
                         goals.Add(new Simple(line));
 
                     }
                     else if(goalType=="Checklist"){
-                        // string bonus= parts[4];
-                        // string timesdone= parts[5];
-                        // string timestobedone=parts[6];
-                        // string aa = $"{goalType},{name},{description},{score},{bonus},{timesdone},{timestobedone};";
+                        
                         goals.Add(new Checklist(line));
 
                     }
                     else{
-                        goals.Add(new Eternal($"{goalType},{name},{description},{score};"));
+                        goals.Add(new Eternal(line));
                     }
+                    test=line;
+  
                 //     
 
                 }
-
+                foreach(CreateGoal go in goals){
+                        go.Append();
+                        go.AppendGoalsfromFile();
+                        counter++;
+                    }
 
             }
             else if(user == "5") {
@@ -123,10 +120,21 @@ class Program
 
             }
             else if(user == "6") {
+                int num = 1;
+                foreach(CreateGoal newg in goals){
+                   Console.WriteLine($"{num}{newg.DisplayGoals()}");
+                   num ++;
+                }
+                Console.WriteLine("Choose the line you want to remove: ");
+                string remove = Console.ReadLine();
+                int index = int.Parse(remove)-1;
+                CreateGoal go = goals[index];
+                goals.Remove(goals[index]);
+                Console.WriteLine("\nThis goal has been removed.");
 
             }
             else if(user == "7") {
-
+                    Console.WriteLine("\nThanks for comming :D!");
             }
             else {
                 Console.WriteLine("\nChoose a number within the list");
