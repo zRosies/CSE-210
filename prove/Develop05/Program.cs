@@ -92,8 +92,6 @@ class Program
                         goals.Add(new Eternal(line));
                     }
                     test=line;
-  
-                //     
 
                 }
                 foreach(CreateGoal go in goals){
@@ -131,6 +129,7 @@ class Program
                 CreateGoal go = goals[index];
                 goals.Remove(goals[index]);
                 Console.WriteLine("\nThis goal has been removed.");
+                counter --;
 
             }
             else if(user == "7") {
