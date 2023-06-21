@@ -20,7 +20,7 @@ public class CreateGoal{
         foreach(string line in _goalMenu){
                 Console.WriteLine(line);
             }
-        Console.Write("Which type of goal would you like to create?");
+        Console.Write("\nWhich type of goal would you like to create?");
         user = Console.ReadLine();
         return user;
     }

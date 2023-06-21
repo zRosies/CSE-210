@@ -16,7 +16,7 @@ class Program
                 pontuation += go.DisplayScore();
                 
             }
-            Console.WriteLine($"You have: {pontuation} points.");
+            Console.WriteLine($"\nYou have: {pontuation} points.");
 
             Console.WriteLine("\nMenu:");
             foreach(string line in menu) {
@@ -67,6 +67,7 @@ class Program
                     }
                    
                 }
+                Console.WriteLine($"\nYour {fileName} has been saved!");
 
             }
             else if(user == "4") {
@@ -99,22 +100,29 @@ class Program
                         go.AppendGoalsfromFile();
                         counter++;
                     }
+                Console.WriteLine("\nYour file has been loaded.");
 
             }
             else if(user == "5") {
                 int count = 1;
+                int check =0;
                 foreach(CreateGoal go in goals){
                     Console.WriteLine($"{count}{go.DisplayGoals()}");
                     count ++;
+                    check++;
+                }
+                if(check >0){
+                    Console.WriteLine("Which goal did you accomplish?");
+                    string goalAccomplished= Console.ReadLine();
+                    int goalIndex= int.Parse(goalAccomplished)-1;
+                    CreateGoal goalSelected = goals[goalIndex];
+                    int points = goalSelected.GoalCompleted();
+                    
+                    Console.WriteLine($"\nCongratulations, you've earned {points} points.");
+
                 }
 
-                Console.WriteLine("Which goal did you accomplish?");
-                string goalAccomplished= Console.ReadLine();
-                int goalIndex= int.Parse(goalAccomplished)-1;
-                CreateGoal goalSelected = goals[goalIndex];
-                int points = goalSelected.GoalCompleted();
                 
-                Console.WriteLine($"\nCongratulations, you've earned {points} points.");
 
             }
             else if(user == "6") {
